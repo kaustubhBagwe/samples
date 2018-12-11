@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <style>
+        .accept {
+            background-color: #e7ea278c;
+            border: navajowhite;
+            box-shadow: 0px 0px 2px;
+        }
+
+        .Done {
+            background-color: #3cea278c;
+            border: navajowhite;
+            box-shadow: 0px 0px 2px;
+        }
+
+        .kitchenDv {
+            width: 93%;
+            background-color: #eae9e9;
+            padding: 12px;
+            border-radius: 18px;
+            margin-bottom: 14px;
+            border: 1px solid #c5c5c5;
+            box-shadow: 0px 0px 10px;
+        }
+
+        #billtbl tr th {
+            color: #104d7d9c;
+            cursor: pointer;
+            word-spacing: 4px;
+            font-size: 100%;
+        }
+
+        .divMax button {
+            font-size: 58%;
+        }
+
+        .divMax {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .divFifty {
+            width: 50%;
+            float: left;
+        }
+
+        span {
+            color: #b0b0b0;
+            font-weight: 600;
+        }
+
+        select {
+            width: 77%;
+            padding: 12px;
+            display: inline-block;
+        }
+
+        #NewOrder {
+            margin-top: 10px;
+            padding: 6px;
+            font-size: 58%;
+            border: none;
+            width: 16%;
+            font-weight: 600;
+        }
+
+        #refresh {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            border: none;
+            width: 20%;
+            font-size: 68%;
+            font-weight: 600;
+        }
+
+        #Billgenerate {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color: #a1ef5a;*/
+            border: none;
+            width: 20%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #BillgenerateFinal1 {
+            margin-top: 10px;
+            padding: 6px;
+            background-color: #efdb5a;
+            border: none;
+            width: 100%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #BillgenerateFinal2 {
+            margin-top: 10px;
+            padding: 6px;
+            background-color: #a1ef5a;
+            border: none;
+            width: 100%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+        /*user87675832*/
+
+        #Cancel {
+            margin-top: 10px;
+            padding: 6px;
+            background-color: #ef665a;
+            border: none;
+            width: 100%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #Reserved {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color:#5ab1ef;*/
+            border: none;
+            width: 19%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #ReleaseTable {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color:#5aefda;*/
+            border: none;
+            width: 18%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        input[type=text] {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            /*border: none;*/
+            width: 93%;
+        }
+
+        .rightorient {
+            float: right;
+            text-align: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .veg {
+            background-color: #5ebc5e;
+            border: none;
+            color: #fff;
+            font-size: 84%;
+            padding: 3px;
+        }
+
+        .nonveg {
+            background-color: #801d06;
+            border: none;
+            color: #fff;
+            font-size: 84%;
+            padding: 3px;
+        }
+    </style>
+    <style>
+        .btnddMenu {
+            background: green;
+            color: #fff;
+            border: none;
+            padding: 6px;
+        }
+
+        #paremtMenudv {
+            width: 96%;
+            overflow-x: scroll;
+            height: 72px;
+            overflow-y: -webkit-paged-x;
+        }
+
+        #ParentMenu {
+            list-style-type: none;
+            padding: 1px 15px;
+            display: inline;
+        }
+
+            #ParentMenu Li, a {
+                Float: Left;
+                padding: 8px 10px;
+                text-decoration: none;
+                border-radius: 12px;
+                color: #104d7d;
+                font-size: large;
+                font-weight: 600;
+            }
+
+        #dvmenu {
+            padding-left: 12px;
+            background-color: #c5c5c533;
+            min-height: 70%;
+            min-width: 95%;
+            max-height: 325px;
+            overflow-y: scroll;
+        }
+
+        #dvmenuBill {
+            padding-left: 0px;
+            background-color: #c5c5c533;
+            min-height: 70%;
+            min-width: 95%;
+        }
+
+        #Search {
+            padding: 18px;
+            width: 80%;
+            border-left: transparent;
+            border-right: transparent;
+            border-top: transparent;
+            border-bottom: 2px solid #b3b1b1;
+            color: #52888a;
+            font-weight: 700;
+        }
+
+        body {
+            font-family: monospace;
+            top: 0;
+            left: 0;
+            right: 0;
+            /*margin: 0;*/
+            overflow-x: hidden;
+            width: 93%;
+        }
+
+        h3 {
+            color: #040404bd;
+        }
+
+        #NavMainRight-Sm {
+            display: none;
+            width: 20%;
+            Float: Right;
+            padding: 16px 0px;
+            color: #fff;
+            background: transparent;
+            border: navajowhite;
+        }
+
+            #NavMainRight-Sm button {
+                background: transparent;
+                color: #fff;
+                border: none;
+                font-size: 22px;
+            }
+
+        #MyNavname:hover {
+            Color: #fdf729;
+            cursor: pointer;
+            word-spacing: 12px;
+        }
+
+        #Myname:hover {
+            Color: #2269a1;
+            cursor: pointer;
+            word-spacing: 12px;
+        }
+
+        #nav {
+            width: 100%;
+            background: #040404bd;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0px 14px 20px -4px #000;
+            position: fixed;
+        }
+
+        #NavMainLeft {
+            width: 20%;
+            Float: Left;
+            padding: 1px 0px;
+            color: #fff;
+        }
+
+        #NavMainRight {
+            width: 80%;
+            Float: Right;
+            padding: 1px 0px;
+            color: #fff;
+        }
+
+            #NavMainRight Ul {
+                list-style-type: none;
+                Float: right;
+                padding: 0px 15px;
+            }
+
+                #NavMainRight Ul Li, a {
+                    Float: Left;
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    border-radius: 12px;
+                }
+
+                    #NavMainRight Ul Li:hover {
+                        Float: Left;
+                        padding: 10px 10px;
+                        text-decoration: none;
+                        color: #0e0c7d;
+                        color: #25d2cc;
+                    }
+
+                    #NavMainRight Ul Li a {
+                        text-decoration: none;
+                        font-size: x-large;
+                        color: #fff;
+                    }
+
+                        #NavMainRight Ul Li a:hover {
+                            text-decoration: none;
+                            font-size: x-large;
+                            color: #0e0c7d;
+                        }
+
+        #NavMainRight-Sm Ul {
+            list-style-type: none;
+            Float: right;
+            padding: 1px 15px;
+            background-color: #040404bd;
+            width: 491%;
+            display: none;
+            box-shadow: 0px 14px 20px -4px #000;
+        }
+
+            #NavMainRight-Sm Ul Li, a {
+                Float: Left;
+                padding: 10px 10px;
+                text-decoration: none;
+                width: 100%;
+            }
+
+                #NavMainRight-Sm Ul Li:hover {
+                    Float: Left;
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    color: #0e0c7d;
+                    background-color: #fff;
+                }
+
+                #NavMainRight-Sm Ul Li a {
+                    text-decoration: none;
+                    font-size: x-large;
+                    color: #fff;
+                }
+
+                    #NavMainRight-Sm Ul Li a:hover {
+                        text-decoration: none;
+                        color: #fff;
+                        color: #0e0c7d;
+                    }
+
+        #NavMainRight-Sm button :focus + #lstMenu {
+            display: block;
+        }
+
+        #main {
+            height: 75%;
+            text-align: center;
+            padding: 99px;
+        }
+
+        #Skills {
+            height: 75%;
+            text-align: center;
+            background-color: #040404bd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        table {
+            width: 90%;
+        }
+
+            table tr th {
+                color: #a91818;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: x-large;
+            }
+
+            table td {
+                padding: 1px 0px;
+                color: #4899b1;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: x-large;
+            }
+
+        #projecttabl tr:hover {
+            padding: 1px 0px;
+            color: #fff;
+            cursor: pointer;
+            word-spacing: 4px;
+            font-size: x-large;
+        }
+
+        #projects {
+            height: 75%;
+            text-align: center;
+            background-color: #05213ebd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        #contacts {
+            height: 75%;
+            text-align: center;
+            background-color: #20053ebd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        #map {
+            height: 100%;
+            background-color: #fff;
+            min-width: 546px;
+            min-height: 340px;
+        }
+
+        #footer {
+            height: 5%;
+            text-align: center;
+            background-color: #185fa9cf;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 5px;
+        }
+
+        @media (max-width: 707px) {
+            #NavMainRight {
+                display: none;
+            }
+
+            #NavMainRight-Sm {
+                display: block;
+            }
+
+            body {
+                overflow: none;
+            }
+
+            #map {
+                height: 10%;
+                background-color: #fff;
+                min-width: 245px;
+                min-height: 200px;
+            }
+
+            .addmenuinput {
+                padding: 4px;
+            }
+
+            table td {
+                padding: 1px 0px;
+                color: #4899b1;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: 14px;
+            }
+
+            .btnddMenu {
+                background: green;
+                color: #fff;
+                border: none;
+                padding: 4px;
+            }
+
+            .ordercntipt {
+                width: 19px;
+                padding: 2px;
+            }
+
+            #Search {
+                font-size: 60%;
+            }
+        }
+
+        @media (min-width:707px) {
+            #Search {
+                width: 50%;
+            }
+        }
+
+        .kitchenDv button {
+            margin-top: 10px;
+            padding: 12px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div id="NavMainLeft">
+            <h1 style="padding-left: 19px;text-shadow:2px 2px 8px #000;padding-top: 5px;" id="MyNavname"><!--HotelMenu--></h1>
+        </div>
+        <div id="NavMainRight">
+            <ul>
+                <li><a href="#Skills">Menu</a></li>
+                <li><a href="login.html">Track Order</a></li>
+                <li><a href="#main">About us </a></li>
+                <li><a href="#Skills">Terms and Conditions</a></li>
+            </ul>
+        </div>
+        <div id="NavMainRight-Sm">
+            <button onclick="myfucntion()">+</button>
+            <ul id="lstMenu">
+                <li><a href="#Skills">Menu</a></li>
+                <li><a href="login.html">Track Order</a></li>
+                <li><a href="#main">About us </a></li>
+                <li><a href="#Skills">Terms and Conditions</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="divMax" style="margin-top:75px">
+        <div class="divFifty" style="width:30%;"><span>OfflineOrder</span></div>
+        <div class="divFifty rightorient" style="width: 70%;">Rohit Survey (Kitchen Manager)</div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="divMax" id="ManagerSection">
+        <button style="padding:12px">Previous Order</button>
+        <button style="padding:12px;float:right">Refresh Order</button>
+    </div>
+    <div class="divMax" id="ManagerSection">
+        <div class="kitchenDv">
+            <table style="width: 100%;">
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">155245</td>
+                </tr>
+                <tr>
+                    <td><H4>Item(2)</H4></td>
+                    <td style="text-align: right;">12/11/2018 6.11 PM</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Harabhara Kabab</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Paneer Tikka</td>
+                </tr>
+
+            </table>
+            <button class="accept">Accept</button>
+
+
+        </div>
+        <div class="kitchenDv">
+            <table style="width: 100%;">
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">155245</td>
+                </tr>
+                <tr>
+                    <td><H4>Item(2)</H4></td>
+                    <td style="text-align: right;">12/11/2018 6.11 PM</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Harabhara Kabab</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Paneer Tikka</td>
+                </tr>
+
+            </table>
+            <button class="Done">Done</button>
+
+
+        </div>
+        <div class="kitchenDv">
+            <table style="width: 100%;">
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">155245</td>
+                </tr>
+                <tr>
+                    <td><H4>Item(2)</H4></td>
+                    <td style="text-align: right;">12/11/2018 6.11 PM</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Harabhara Kabab</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Paneer Tikka</td>
+                </tr>
+
+            </table>
+            <button class="accept">Accept</button>
+
+
+        </div>
+        <div class="kitchenDv">
+            <table style="width: 100%;">
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">155245</td>
+                </tr>
+                <tr>
+                    <td><H4>Item(2)</H4></td>
+                    <td style="text-align: right;">12/11/2018 6.11 PM</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Harabhara Kabab</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Paneer Tikka</td>
+                </tr>
+
+            </table>
+            <button class="accept">Accept</button>
+
+
+        </div>
+
+    </div>
+    <div class="clear"></div>
+
+    <div id="footer">
+        <center>
+            <h3 style="color:#fff;text-shadow: 2px 2px 8px #000">Handcrafted by Kaustubh Bagwe @ 2018</h3>
+        </center>
+    </div>
+</body>
+</html>
