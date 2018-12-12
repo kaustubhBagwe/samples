@@ -1,0 +1,778 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <style>
+        .hamberdv {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .bar1, .bar2, .bar3 {
+            width: 34px;
+            height: 5px;
+            background: #fff;
+            margin: 6px 0;
+            transition: 0.5s;
+        }
+
+        .change .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .change .bar2 {
+            opacity: 0;
+        }
+
+        .change .bar3 {
+            -webkit-transform: rotate(-318deg) translate(-10px, -7px);
+        }
+
+        #billtbl tr th {
+            color: #104d7d9c;
+            cursor: pointer;
+            word-spacing: 4px;
+            font-size: 100%;
+        }
+
+        .divMax button {
+            font-size: 58%;
+        }
+
+        .divMax {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .divFifty {
+            width: 50%;
+            float: left;
+        }
+
+        span {
+            color: #b0b0b0;
+            font-weight: 600;
+        }
+
+        select {
+            width: 77%;
+            padding: 12px;
+            display: inline-block;
+        }
+
+        #NewOrder {
+            margin-top: 10px;
+            padding: 6px;
+            font-size: 58%;
+            border: none;
+            width: 16%;
+            font-weight: 600;
+        }
+
+        #refresh {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            border: none;
+            width: 20%;
+            font-size: 68%;
+            font-weight: 600;
+        }
+
+        #Billgenerate {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color: #a1ef5a;*/
+            border: none;
+            width: 20%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #BillgenerateFinal1 {
+               margin-top: 10px;
+    padding: 6px;
+    background-color: #515151;
+    border: none;
+    width: 100%;
+    font-size: 58%;
+    font-weight: 600;
+    color: #fff;
+        }
+
+        #BillgenerateFinal2 {
+            margin-top: 10px;
+            padding: 6px;
+            background-color: #a1ef5a;
+            border: none;
+            width: 100%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+        /*user87675832*/
+
+        #Cancel {
+            margin-top: 10px;
+            padding: 6px;
+            background-color: #ef665a;
+            border: none;
+            width: 100%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #Reserved {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color:#5ab1ef;*/
+            border: none;
+            width: 19%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        #ReleaseTable {
+            margin-top: 10px;
+            padding: 6px;
+            /*background-color:#5aefda;*/
+            border: none;
+            width: 18%;
+            font-size: 58%;
+            font-weight: 600;
+        }
+
+        input[type=text] {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            /*border: none;*/
+            width: 84%;
+        }
+
+        input[type=number] {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            /*border: none;*/
+            width: 84%;
+        }
+
+        input[type=email] {
+            margin-top: 10px;
+            padding: 12px;
+            /*background-color: #c5c5c5;*/
+            /*border: none;*/
+            width: 84%;
+        }
+
+        .rightorient {
+            float: right;
+            text-align: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .veg {
+            background-color: #5ebc5e;
+            border: none;
+            color: #fff;
+            font-size: 84%;
+            padding: 3px;
+        }
+
+        .nonveg {
+            background-color: #801d06;
+            border: none;
+            color: #fff;
+            font-size: 84%;
+            padding: 3px;
+        }
+    </style>
+    <style>
+        span {
+            color: #5f5f5f;
+        }
+
+        .btnddMenu {
+            background: green;
+            color: #fff;
+            border: none;
+            padding: 6px;
+        }
+
+        #paremtMenudv {
+            width: 96%;
+            overflow-x: scroll;
+            height: 72px;
+            overflow-y: -webkit-paged-x;
+        }
+
+        #ParentMenu {
+            list-style-type: none;
+            padding: 1px 15px;
+            display: inline;
+        }
+
+            #ParentMenu Li, a {
+                Float: Left;
+                padding: 8px 10px;
+                text-decoration: none;
+                border-radius: 12px;
+                color: #104d7d;
+                font-size: large;
+                font-weight: 600;
+            }
+
+        #dvmenu {
+            padding-left: 12px;
+            background-color: #c5c5c533;
+            min-height: 70%;
+            min-width: 95%;
+            max-height: 325px;
+            overflow-y: scroll;
+        }
+
+        #dvmenuBill {
+            padding-left: 0px;
+            background-color: #c5c5c533;
+            min-height: 70%;
+            min-width: 95%;
+        }
+
+        #Search {
+            padding: 18px;
+            width: 80%;
+            border-left: transparent;
+            border-right: transparent;
+            border-top: transparent;
+            border-bottom: 2px solid #b3b1b1;
+            color: #52888a;
+            font-weight: 700;
+        }
+
+        body {
+            font-family: monospace;
+            top: 0;
+            left: 0;
+            right: 0;
+            /*margin: 0;*/
+            overflow-x: hidden;
+            width: 93%;
+        }
+
+        h3 {
+            color: #040404bd;
+        }
+
+        #NavMainRight-Sm {
+            display: none;
+            width: 20%;
+            Float: Right;
+            padding: 16px 0px;
+            color: #fff;
+            background: transparent;
+            border: none;
+            margin-top: -8px;
+        }
+
+            #NavMainRight-Sm button {
+                background: transparent;
+                color: #fff;
+                border: none;
+                font-size: 22px;
+            }
+
+        #MyNavname:hover {
+            Color: #fdf729;
+            cursor: pointer;
+            word-spacing: 12px;
+        }
+
+        #Myname:hover {
+            Color: #2269a1;
+            cursor: pointer;
+            word-spacing: 12px;
+        }
+
+        #nav {
+            width: 100%;
+            background: #040404bd;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0px 14px 20px -4px #000;
+            position: fixed;
+            z-index: 1;
+        }
+
+        #NavMainLeft {
+            width: 20%;
+            Float: Left;
+            padding: 1px 0px;
+            color: #fff;
+        }
+
+        #NavMainRight {
+            width: 80%;
+            Float: Right;
+            padding: 1px 0px;
+            color: #fff;
+        }
+
+            #NavMainRight Ul {
+                list-style-type: none;
+                Float: right;
+                padding: 0px 15px;
+            }
+
+                #NavMainRight Ul Li, a {
+                    Float: Left;
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    border-radius: 12px;
+                }
+
+                    #NavMainRight Ul Li:hover {
+                        Float: Left;
+                        padding: 10px 10px;
+                        text-decoration: none;
+                        color: #0e0c7d;
+                        color: #25d2cc;
+                    }
+
+                    #NavMainRight Ul Li a {
+                        text-decoration: none;
+                        font-size: x-large;
+                        color: #fff;
+                    }
+
+                        #NavMainRight Ul Li a:hover {
+                            text-decoration: none;
+                            font-size: x-large;
+                            color: #0e0c7d;
+                        }
+
+        #NavMainRight-Sm Ul {
+            list-style-type: none;
+            Float: right;
+            padding: 1px 15px;
+            background-color: #040404bd;
+            width: 491%;
+            display: none;
+            box-shadow: 0px 14px 20px -4px #000;
+        }
+
+            #NavMainRight-Sm Ul Li, a {
+                Float: Left;
+                padding: 10px 10px;
+                text-decoration: none;
+                width: 100%;
+            }
+
+                #NavMainRight-Sm Ul Li:hover {
+                    Float: Left;
+                    padding: 10px 10px;
+                    text-decoration: none;
+                    color: #0e0c7d;
+                    background-color: #fff;
+                }
+
+                #NavMainRight-Sm Ul Li a {
+                    text-decoration: none;
+                    font-size: x-large;
+                    color: #fff;
+                }
+
+                    #NavMainRight-Sm Ul Li a:hover {
+                        text-decoration: none;
+                        color: #fff;
+                        color: #0e0c7d;
+                    }
+
+        #NavMainRight-Sm button :focus + #lstMenu {
+            display: block;
+        }
+
+        #main {
+            height: 75%;
+            text-align: center;
+            padding: 99px;
+        }
+
+        #Skills {
+            height: 75%;
+            text-align: center;
+            background-color: #040404bd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        table {
+            width: 90%;
+        }
+
+            table tr th {
+                color: #a91818;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: x-large;
+            }
+
+            table td {
+                padding: 1px 0px;
+                color: #4899b1;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: x-large;
+            }
+
+        #projecttabl tr:hover {
+            padding: 1px 0px;
+            color: #fff;
+            cursor: pointer;
+            word-spacing: 4px;
+            font-size: x-large;
+        }
+
+        #projects {
+            height: 75%;
+            text-align: center;
+            background-color: #05213ebd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        #contacts {
+            height: 75%;
+            text-align: center;
+            background-color: #20053ebd;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 99px;
+        }
+
+        #map {
+            height: 100%;
+            background-color: #fff;
+            min-width: 546px;
+            min-height: 340px;
+        }
+
+        #footer {
+            height: 5%;
+            text-align: center;
+            background-color: #185fa9cf;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 5px;
+        }
+
+        @media (max-width: 707px) {
+            #NavMainRight {
+                display: none;
+            }
+
+            #NavMainRight-Sm {
+                display: block;
+            }
+
+            body {
+                overflow: none;
+            }
+
+            #map {
+                height: 10%;
+                background-color: #fff;
+                min-width: 245px;
+                min-height: 200px;
+            }
+
+            .addmenuinput {
+
+                width: 19px;
+                padding: 2px;
+                border: none;
+                background: #f4f4f4;
+                Text-align: center;
+            }
+
+            table td {
+                padding: 1px 0px;
+                color: #4899b1;
+                cursor: pointer;
+                word-spacing: 4px;
+                font-size: 14px;
+            }
+
+            .btnddMenu {
+                background: #00800000;
+                color: green;
+                border: none;
+                padding: 0px;
+                width: 17px;
+                border-radius: 9px;
+                border: 2px solid green;
+            }
+
+            .ordercntipt {
+                width: 19px;
+                padding: 2px;
+                border: none;
+                background: #f4f4f4;
+                text-align: center;
+            }
+
+            #Search {
+                font-size: 60%;
+            }
+        }
+
+        @media (min-width:707px) {
+            #Search {
+                width: 50%;
+            }
+        }
+    </style>
+    <script>
+        function currenttime() {
+
+            var today = new Date();
+            var d = today.getDate();
+            var mo = today.getMonth();
+            var yr = today.getFullYear();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var m = checktime(m);
+            var s = checktime(s);
+            document.getElementById('currenttime').innerHTML = d + "/" + mo + "/" + yr + " " + h + ":" + m + ":" + s;
+            //var t = setTimeout(currenttime, 500)
+        }
+        function checktime(i) {
+            if (i < 10) { i = "0" + i; }
+            return i;
+        }
+        function myfucntion(elm) {
+            elm.classList.toggle('change');
+            var x = document.getElementById('lstMenu');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        var totalitem = 0;
+
+        function AddItem(elm) {
+            var d = elm.id;
+            var inputelm = document.getElementById(d).value;
+            var totalitelforinput = parseInt(inputelm) + 1;
+            document.getElementById(d).value = parseInt(totalitelforinput);
+            totalitem = totalitem + 1;
+            TotalItem(totalitem);
+        }
+        function removeItem(elm) {
+            var d = elm.id;
+            var inputelm = document.getElementById(d).value;
+            var totalitelforinput = (parseInt(inputelm) - 1);
+            if (totalitelforinput == -1) {
+                totalitelforinput = 0;
+                document.getElementById(d).value = 0;
+                totalitem = totalitem - 1;
+                TotalItem(totalitem);
+            } else {
+                document.getElementById(d).value = parseInt(totalitelforinput);
+                totalitem = totalitem - 1;
+                TotalItem(totalitem);
+            }
+        }
+        function TotalItem(ti) {
+            var totalitemspan = document.getElementById('TotalItem');
+            totalitemspan.innerHTML = ti;
+            var TotalItemAmount = (260 * ti);
+            document.getElementById('TotalItemAmount').innerHTML = TotalItemAmount.toFixed(2);
+            var sgst = document.getElementById('sgst');
+            sgst.innerHTML = (parseInt(TotalItemAmount) * 2.5 / 100).toFixed(2);
+            var cgst = document.getElementById('cgst');
+            cgst.innerHTML = (parseInt(TotalItemAmount) * 2.5 / 100).toFixed(2);
+            var finalamount = document.getElementById('finalamount');
+            finalamount.innerHTML = (parseInt(TotalItemAmount) + (parseInt(TotalItemAmount) * 2.5 / 100) + (parseInt(TotalItemAmount) * 2.5 / 100)).toFixed(2);
+        }
+
+    </script>
+</head>
+<body onload="currenttime()">
+    
+    <div class="divMax" style="margin-top:10px">
+        <div class="divFifty"><span>OfflineOrder</span></div>
+        <div class="divFifty rightorient">(Manager : Rohit Survey)</div>
+        <div> Order Status : Bill Generated (Not Paid)</div>
+    </div>
+    <style>
+        .uldiv {
+            max-height: 80px;
+            overflow-y: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+            .uldiv ul {
+                float: left;
+                display: inline-flex;
+            }
+            .uldiv li{
+                list-style-type: none;
+            }
+            .uldiv a{
+              padding: 15px;
+            }
+    </style>
+    
+
+    <div class="clear"></div>
+    
+    <div id="dvmenuBill" style="background-color:#90bb9d33;margin-top: 13px;">
+        <div>
+            <br />
+            <fieldset style="border: 1px dotted #c5c5c5;">
+                <legend>Bill</legend>
+               <center><h4>Hotel Name</h4></center> 
+                <table style="width: 100%;">
+                    <tr>
+                        <td><strong>Order #: 76</strong></td>
+                        <td><strong id="currenttime" style="float: right;"></strong></td>
+                    </tr>
+                </table>
+                <br />
+                <table cellspacing="5" border="0" id="billtbl" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th nowrap>S/N</th>
+                            <th nowrap>ITEM</th>
+                            <th nowrap>QTY</th>
+                            <th nowrap style="text-align: left;">PRICE</th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td nowrap>Harabhara Kabab</td>
+                            <td style="text-align: center;width: 24%;">1</td>
+                            <td nowrap>Rs 260.00</td>
+                          
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td nowrap>Paneer Tikka</td>
+                            <td style="text-align: center;width: 24%;">2</td>
+                            <td nowrap>Rs 520.00</td>
+                         
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center">-----------------------------------------</td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td nowrap>Total</td>
+                            <td style="text-align: center;width: 24%;"><span id="TotalItem"></span></td>
+                            <td nowrap>Rs <span id="TotalItemAmount">00.00</span></td>
+                            <td nowrap></td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td nowrap>SGST (2.5%)</td>
+                            <td style="text-align: center;width: 24%;"></td>
+                            <td nowrap>Rs <span id="sgst">00.00</span></td>
+                            <td nowrap></td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td nowrap>CGST (2.5%)</td>
+                            <td style="text-align: center;width: 24%;"></td>
+                            <td nowrap>Rs <span id="cgst">00.00</span></td>
+                            <td nowrap></td>
+                        </tr>
+                        <tr style="font-weight:700">
+                            <td> </td>
+                            <td nowrap>Total Amount</td>
+                            <td style="text-align: center;width: 24%;"></td>
+                            <td nowrap>Rs <span id="finalamount">00.00</span></td>
+                            <td nowrap></td>
+                        </tr>
+                        <tr style="font-weight:700">
+                            <td> </td>
+                            <td nowrap>Status</td>
+                            <td style="text-align: center;width: 24%;"></td>
+                            <td nowrap> <span id="finalamount">Not Paid</span></td>
+                            <td nowrap></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br />
+                <table style="width: 100%;">
+                    <tr>
+
+                        <td nowrap><span>GST Number</span>
+                        <td><span>JSJH724WAYOP</span></td>
+                    </tr>
+                    <tr>
+
+                        <td nowrap><span>E.&O.E</span>
+                        <td nowrap><span>Thank you !!! </span></td>
+
+                    </tr>
+
+                </table>
+                <form>
+                    <table cellspacing="5" border="0" id="billtbl" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td nowrap><span>Note</span><br /> No Spicy</td>
+                            </tr>
+                            <tr>
+
+                                <td nowrap><span>Customer Email id</span><br />kaustubh@yahoo.com</td>
+                            </tr>
+                            <tr>
+
+                                <td nowrap><span>Customer Contact Number</span><br />8087958141</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                  
+                </form>
+            </fieldset>
+
+        </div>
+    </div>
+    <table cellspacing="5" border="0" id="billtbl" style="width:101%">
+        <tbody>
+            <tr>
+                <td align="center"><input type="submit" id="BillgenerateFinal1" value="Download Copy" /></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div id="footer">
+        <center>
+            <h3 style="color:#fff;text-shadow: 2px 2px 8px #000">Handcrafted by Kaustubh Bagwe @ 2018</h3>
+        </center>
+    </div>
+</body>
+</html>
