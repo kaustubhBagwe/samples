@@ -1,0 +1,20 @@
+1) Vendor Registration kaustubh.bagwe@brainvire.com |123 - done (1 Error)
+1 Error: Vendor New created ... No Offer Uploaded but Menu > View Offer | Crashing app
+
+2) Create Offer- done (0 Error)
+3) View Created Offer - done (0 Error)
+
+4) Create Registration  - Not done (4 Error)
+
+4 Error: 
+1) UI Change - with Exsiting User Registered Again message needs to be change something went wrong , Make it User Might already exist) other wise  With New Registration happing properly
+2) Vendor Login > Log out  then customer login > Menu > My Profile - Vendor Details are shoing it should be customer details
+3) After Login Log Out > Cutomer Profile Showing Correct But Vendor Pages are Showing.
+4) With out Login Trying to Grab offer on login page APP CRASHING
+
+
+5) Get Promocode  - done (0 Error)
+6) View Promocode Offer- Not done (1 Error)
+6 Error: After Relogin Menu > View Offer to check last promocode > App Crashing
+
+7) Match Promocode Offer From Vendor END - Page Working Fine but need to Check What data is been Recorded in Database because response is coming as Invalid Promo code
