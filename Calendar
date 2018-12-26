@@ -1,0 +1,84 @@
+@{
+    ViewBag.Title = "Calendar";
+}
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
+<style>
+    .preback {
+        width: 15%;
+        display: inline-block;
+    }
+
+    .prebackright {
+        width: 25%;
+        display: inline-block;
+    }
+
+    .prebacktoday {
+        width: 30%;
+        display: inline-block;
+    }
+
+    .active {
+        box-shadow: 0px 0px 4px #03a9f4;
+        font-weight: bolder;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-8">
+            <input type="button" class="form-control preback" value="Prev Day <<" />
+            <input type="date" value="2018-26-12" class="form-control prebacktoday active" data-date="" data-date-format="DD MMMM YY" />
+            @*<input type="button" class="form-control prebacktoday active" value="Today Wednesday 26 2018" />*@
+            <input type="button" class="form-control preback" value="Next Day >>" />
+
+        </div>
+        <div class="col-md-4">
+            <input type="button" class="form-control prebackright" value="This Month" />
+            <input type="button" class="form-control prebackright" value="This Week" />
+            <input type="button" class="form-control prebackright active" value="This Day" />
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <table class="table table-bordered table-hover table-responsive table-striped">
+            <tr>
+
+                <td colspan="5" align="center">Wednsday 25 2018 (4/10)</td>
+
+            </tr>
+            <tr>
+                <td nowrap>SR NO</td>
+                <td nowrap>Time</td>
+                <td nowrap>Status</td>
+                <td nowrap>Client Name</td>
+                <td nowrap>Contact Details</td>
+            </tr>
+
+            @{
+                for (int i = 0; i < 10; i++)
+                {
+                    <tr>
+                        <td nowrap>@i</td>
+                        <td nowrap>9.00 AM</td>
+                        @if (i % 2 == 1)
+                        {
+                            <td nowrap>Visted</td>
+                        }
+                        else
+                        {
+                            <td nowrap>Waiting</td>
+                        }
+
+                        <td nowrap> Mr. S B Shah </td>
+                        <td nowrap> kaustubh_bagwe@yahoo.com (+91 8542568965)</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
